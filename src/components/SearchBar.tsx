@@ -1,4 +1,4 @@
-import {useCallback, useState} from "react";
+import React, {useCallback, useState} from "react";
 import Select from "react-select";
 import {searchLocations} from "../services/weatherService";
 import {Location} from "../types";
