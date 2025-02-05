@@ -1,11 +1,12 @@
-import {WeatherData} from "../types";
+import React from "react";
+import {Location, WeatherData} from "../types";
 
 interface Props {
-  city: string;
+  location: Location;
   data: WeatherData;
 }
 
-const WeatherCard = ({city, data}: Props) => {
+const WeatherCard = ({location, data}: Props) => {
   const getWindDirectionEmoji = (direction: number) => {
     if (direction >= 337.5 || direction < 22.5) return '⬆️';
     if (direction >= 22.5 && direction < 67.5) return '↗️';
@@ -20,10 +21,10 @@ const WeatherCard = ({city, data}: Props) => {
 
   return (
     <div className="weather-card">
-      <h2>{city}</h2>
-      <p>🌡️ Temperature: {data.temperature}°C</p>
-      <p>💨 Wind Speed: {data.windspeed} km/h</p>
-      <p>{getWindDirectionEmoji(data.winddirection)} Wind Direction: {data.winddirection}°</p>
+      <h2>{location.name}, {location.country}</h2>
+      <p>🌡️ Temperature: <b>{data.temperature}°C</b></p>
+      <p>💨 Wind Speed: <b>{data.windspeed} km/h</b></p>
+      <p>{getWindDirectionEmoji(data.winddirection)} Wind Direction: <b>{data.winddirection}°</b></p>
     </div>
   );
 };
